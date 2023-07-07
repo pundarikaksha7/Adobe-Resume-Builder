@@ -79,6 +79,8 @@ nodemon index.js
 
 This would start a native server at localhost:3000/ , go to the server and follow the on screen commands to generate your own resume!.
 
+Both methods would create the pdf inside `output` folder.
+
 
 
 
