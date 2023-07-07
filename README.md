@@ -88,17 +88,19 @@ Both methods would create the pdf inside `output` folder.
 
 ## Files Structure
 
-Output would store all your generated resumes.
+```output``` would store all your generated resumes.
 
-SampleOutputs stores some sample generated resumes.
+```sampleoutput``` stores some sample generated resumes.
 
-Views contains .ejs files (html).
+```views``` contains .ejs files (html).
 
-templates contains .docx files of sample templates.
+```templates``` contains .docx files of sample templates.
 
-static contains images for template selection during making of custom resume.
+```static``` contains images for template selection during making of custom resume.
 
-index.js contains the driver code.
+```index.js``` contains the driver code for API Call with UI.
+
+```apiindex.js``` contains the driver code for API.
 
 ## PS
 This is not a website, it is a Node JS application. Being a python developer, it was fun learning a new framework to solve a certain problem.
