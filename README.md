@@ -39,12 +39,6 @@ npm install
 
 ## Mentioning Path Variables and Environment Variables
 
-Inside index.js and apiiindex.js there are two path names:
-
-docPaths refers to the directory which stores .docx files of resume templates.
-
-resultPaths would store the newly created resume pdfs.
-
 Replace these path names with path names from your personal machine.
 
 Set the environment variables using the following commands in your command prompt/terminal.
