@@ -105,6 +105,8 @@ static contains images for demonstration.
 index.js contains the driver code.
 
 ## PS
-This is not a website, it is a Node JS application. Evaluators, kindly note that I am not a Node developer, I learnt the entire framework in a short span, therefore kindly ignore any minor shortcomings. Thanks!
+This is not a website, it is a Node JS application. Being a python developer, it was fun learning a new framework to solve a certain problem.
+
+Thanks!
 
 
