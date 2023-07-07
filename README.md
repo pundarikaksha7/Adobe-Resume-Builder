@@ -34,7 +34,7 @@ For this project to run, node modules must be present inside your project direct
 After cloning the repository, install all the dependencies by running:
 
 ```shell
-npm install.
+npm install
 ```
 
 ## Mentioning Path Variables and Environment Variables
