@@ -60,7 +60,7 @@ export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>
 ## Method 1: Resume Builder API
 
 This is the main API. It can accept responses via various methods such as HTTP Response, Curl response etc.
-Run the following command in your command prompt/terminal to run cUrl input:
+Run the following command in your command prompt/terminal to run Curl command:
 
 ```shell
 nodemon apiiindex.js
