@@ -86,7 +86,9 @@ This would start a native server at localhost:3000/ , go to the server and follo
 
 ## Files Structure
 
-Output contains resume samples.
+Output would store all your generated resumes.
+
+SampleOutputs stores some sample generated resumes.
 
 Views contains .ejs files (html).
 
