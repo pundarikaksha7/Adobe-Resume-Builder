@@ -1,5 +1,5 @@
 # Adobe-Resume-Builder-Project
-This project is a resume builder application which accepts data from the user from a webpage or a cUrl command, processes it and returns a .pdf file using Adobe's Document Merge API.
+This project is a resume builder application which accepts data from the user from a webpage or a cUrl command, processes it and returns a ```.pdf``` file using Adobe's Document Merge API.
 
 
 This is my solution for Adobe's Papyrus Nebulae Hackathon's second round.
@@ -65,7 +65,7 @@ Run the following command in your command prompt/terminal to run cUrl input:
 nodemon apiiindex.js
 ```
 
-This would input a cUrl command in another terminal window, port set at localhost:3000/, and would directly output a .pdf file inside your output directory.
+This would input a ```cUrl``` command in another terminal window, port set at ```localhost:3000/```, and would directly output a ```.pdf``` file inside the ```output``` directory.
 
 Important: The server should be up and running for this to work.
 
@@ -77,11 +77,9 @@ Run the following command in your command prompt/terminal :
 nodemon index.js
 ```
 
-This would start a native server at localhost:3000/ , go to the server and follow the on screen commands to generate your own resume!.
+This would start a native server at ```localhost:3000/``` , go to the server and follow the on screen commands to generate your own resume!.
 
 Both methods would create the pdf inside `output` folder.
-
-
 
 
 
