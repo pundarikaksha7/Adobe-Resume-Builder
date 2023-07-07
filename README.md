@@ -8,7 +8,9 @@ This is my solution for Adobe's Papyrus Nebulae Hackathon's second round.
 
 Clone the repository to your local machine by running the following command inside your terminal/ command prompt.
 
+```shell
 git clone "https://github.com/pundarikaksha7/AdobeRound-2.git"
+```
 
 
 
