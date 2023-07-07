@@ -57,7 +57,7 @@ export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>
 
 # Running the project
 
-## Method 1: Using API 
+## Method 1: Resume Builder API
 
 This is the main API. It can accept responses via various methods such as HTTP Response, Curl response etc.
 Run the following command in your command prompt/terminal to run cUrl input:
@@ -70,9 +70,9 @@ This would input a ```curl``` request in another terminal window, port set at ``
 
 Important: The server should be up and running for this to work.
 
-## Method 2: Custom making resume on webpage
+## Method 2: Resume Builder UI
 
-This file uses a slightly modified version of the above mentioned API to accept responses from webpages
+This file uses a slightly modified version of the above mentioned API to accept responses from user-friendly webpages.
 
 Run the following command in your command prompt/terminal :
 
