@@ -1,6 +1,6 @@
 //path variables
-let docPaths="/Users/pundarikaksha/Desktop/AdobeRound-2/templates/";
-let resultPaths="/Users/pundarikaksha/Desktop/AdobeRound-2/output/";
+let docPaths="templates/";
+let resultPaths="output/";
 
 
 const express = require('express');
