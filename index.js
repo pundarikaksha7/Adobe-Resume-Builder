@@ -100,7 +100,6 @@ app.post('/resume', async (req, res) => {
       const experience=JSON.parse(Experience);
 
       console.log(achievements);
-      console.log("hey");
   
       // Create an ExecutionContext using credentials
       const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
