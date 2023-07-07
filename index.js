@@ -37,6 +37,7 @@ const templateOptions = [
   ];
 
 app.get('/resume', (req, res) => {
+  console.log(path);
   res.render('resume-form');
 });
 
@@ -49,18 +50,22 @@ app.get('/success',(req,res)=>{
     res.render("end");
 })
 
-app.post('/select-template',async (req, res) => {
-    const selectedTemplate = req.body.template;
-    
-    const selectedTemplateDocPath = req.body.template;
+app.post('/select-template', async (req, res) => {
+  const selectedTemplateName = req.body.template;
 
-    path = selectedTemplateDocPath;
   
-   
+
+  if (selectedTemplateName) {
     
-    
+    path = selectedTemplateName; // Assign the selected template's docPath to the path variable
     res.redirect('/resume');
-  });
+  } else {
+    // Handle the case when the selected template is not found
+    res.status(404).send('Selected template not found.');
+  }
+});
+
+
 
 
 // Resume Builder API route
@@ -163,4 +168,6 @@ function createOutputFilePath() {
     ('0' + date.getSeconds()).slice(-2);
   return  resultPaths+ dateString + '.pdf';
 }
+
+
 
