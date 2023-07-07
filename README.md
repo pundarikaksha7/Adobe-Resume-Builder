@@ -15,7 +15,7 @@ git clone "https://github.com/pundarikaksha7/AdobeRound-2.git"
 ## Dependencies
 
 For this project to run, node modules must be present inside your project directory.
-
+```javascript
 "author": "Pundarikaksha",
   "license": "ISC",
   "dependencies": {
@@ -27,6 +27,7 @@ For this project to run, node modules must be present inside your project direct
     "express-session": "^1.17.3",
     "nodemon": "^2.0.22"
   }
+```
 
 After cloning the repository, install all the dependencies by running npm install.
 
