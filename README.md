@@ -100,7 +100,7 @@ Views contains .ejs files (html).
 
 templates contains .docx files of sample templates.
 
-static contains images for demonstration.
+static contains images for template selection during making of custom resume.
 
 index.js contains the driver code.
 
