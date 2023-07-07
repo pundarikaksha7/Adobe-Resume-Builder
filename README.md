@@ -39,7 +39,7 @@ npm install
 
 ## Mentioning Path Variables and Environment Variables
 
-Inside index.js there are two path names:
+Inside index.js and apiiindex.js there are two path names:
 
 docPaths refers to the directory which stores .docx files of resume templates.
 
@@ -64,9 +64,23 @@ export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>
 export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>
 ```
 
-## Running the project
+# Running the project
 
-Run the following command in your command prompt/terminal:
+## Method 1: Using API and cUrl
+
+Run the following command in your command prompt/terminal to run cUrl input:
+
+```shell
+nodemon apiiindex.js
+```
+
+This would input a cUrl command in another terminal window, port set at localhost:3000/, and would directly output a .pdf file inside your output directory.
+
+Important: The server should be up and running for this to work.
+
+## Method 2: Custom making resume on webpage
+
+Run the following command in your command prompt/terminal :
 
 ```shell
 nodemon index.js
