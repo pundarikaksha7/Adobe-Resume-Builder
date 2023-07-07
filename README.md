@@ -57,8 +57,9 @@ export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>
 
 # Running the project
 
-## Method 1: Using API and Curl requests
+## Method 1: Using API 
 
+This is the main API. It can accept responses via various methods such as HTTP Response, Curl response etc.
 Run the following command in your command prompt/terminal to run cUrl input:
 
 ```shell
@@ -70,6 +71,8 @@ This would input a ```curl``` request in another terminal window, port set at ``
 Important: The server should be up and running for this to work.
 
 ## Method 2: Custom making resume on webpage
+
+This file uses a slightly modified version of the above mentioned API to accept responses from webpages
 
 Run the following command in your command prompt/terminal :
 
