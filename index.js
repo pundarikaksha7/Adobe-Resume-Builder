@@ -60,7 +60,7 @@ app.post('/select-template', async (req, res) => {
     path = selectedTemplateName; // Assign the selected template's docPath to the path variable
     res.redirect('/resume');
   } else {
-    // Handle the case when the selected template is not found
+
     res.status(404).send('Selected template not found.');
   }
 });
