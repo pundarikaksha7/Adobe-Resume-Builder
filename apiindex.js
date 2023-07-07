@@ -1,6 +1,6 @@
 //path variables
-let docPaths="/Users/pundarikaksha/Desktop/Adobe Round 2/templates/";
-let resultPaths='output/MergeDocumentToPDF/merge';
+let docPaths="templates/";
+let resultPaths="output/";
 
 
 const templateOptions = [
