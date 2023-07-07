@@ -1,4 +1,4 @@
-# AdobeRound-2
+# Adobe-Resume-Builder-Project
 This project is a resume builder application which accepts data from the user from a webpage, processes it and returns a .pdf file using Adobe's Document Merge API.
 
 
