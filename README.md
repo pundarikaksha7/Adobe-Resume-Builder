@@ -31,7 +31,11 @@ For this project to run, node modules must be present inside your project direct
   }
 ```
 
-After cloning the repository, install all the dependencies by running npm install.
+After cloning the repository, install all the dependencies by running:
+
+```shell
+npm install.
+```
 
 ## Mentioning Path Variables and Environment Variables
 
@@ -68,7 +72,7 @@ Run the following command in your command prompt/terminal:
 nodemon index.js
 ```
 
-This would start a native server at localhost port 3000, go the server and continue on screen commands.
+This would start a native server at localhost:3000/ , go to the server and follow the on screen commands to generate your own resume!.
 
 
 
@@ -88,6 +92,6 @@ static contains images for demonstration.
 index.js contains the driver code.
 
 ## PS
-I am not a Node developer. I learnt the entire framework in a short span, hence kindly ignore any non organised code structures. Thanks!
+This is not a website, it is a Node JS application. Evaluators, kindly note that I am not a Node developer, I learnt the entire framework in a short span, therefore kindly ignore any minor shortcomings. Thanks!
 
 
