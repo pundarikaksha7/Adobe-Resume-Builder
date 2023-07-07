@@ -35,32 +35,36 @@ After cloning the repository, install all the dependencies by running npm instal
 
 Inside index.js there are two path names:
 
-let docPaths="/Users/pundarikaksha/Desktop/Adobe Round 2/templates/";
-let resultPaths='output/MergeDocumentToPDF/merge';
+docPaths refers to the directory which stores .docx files of resume templates.
+
+resultPaths would store the newly created resume pdfs.
 
 Replace these path names with path names from your personal machine.
-
-docPaths refers to the directory which stores .docx files of resume templates.
-resultPaths would store the newly created resume pdfs.
 
 Set the environment variables using the following commands in your command prompt/terminal.
 
 Windows:
 
+```shell
 set PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>
 
 set PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>
+```
 
 MacOS/Linux:
 
+```shell
 export PDF_SERVICES_CLIENT_ID=<YOUR CLIENT ID>
 export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>
+```
 
 ## Running the project
 
 Run the following command in your command prompt/terminal:
 
+```shell
 nodemon index.js
+```
 
 This would start a native server at localhost port 3000, go the server and continue on screen commands.
 
