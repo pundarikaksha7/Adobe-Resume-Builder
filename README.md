@@ -37,9 +37,7 @@ After cloning the repository, install all the dependencies by running:
 npm install
 ```
 
-## Mentioning Path Variables and Environment Variables
-
-Replace these path names with path names from your personal machine.
+## Setting Environment Variables
 
 Set the environment variables using the following commands in your command prompt/terminal.
 
