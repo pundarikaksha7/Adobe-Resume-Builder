@@ -88,7 +88,7 @@ describe('Resume Builder API', () => {
     expect(response.body.error).toBe('Invalid template_id');
   });
 
-  it('should generate a resume PDF with different data', async () => {
+  it('should generate a resume PDF with template 2', async () => {
     // Test case with different data
     const requestBody = {
       template_id: '2',
