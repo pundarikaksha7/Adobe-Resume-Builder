@@ -85,7 +85,11 @@
     <textarea id="Summary" name="Summary" required></textarea>
     <br>
     <label for="Skills">Skills:</label>
-    <input type="text" id="Skills" name="Skills" required>
+    <div id="skillsContainer">
+      <input type="text" id="Skills" name="Skills[]" required>
+      <br>
+    </div>
+    <button type="button" id="addSkillButton">Add Skill</button>
     <br>
 
     <div id="educationContainer">
@@ -142,6 +146,7 @@
 
   <script>
     const form = document.getElementById('resumeForm');
+    const skillsContainer = document.getElementById('skillsContainer');
     const educationContainer = document.getElementById('educationContainer');
     const addEducationButton = document.getElementById('addEducationButton');
     const experienceContainer = document.getElementById('experienceContainer');
@@ -152,6 +157,18 @@
     let educationCounter = 1;
     let experienceCounter = 1;
     let achievementCounter = 1;
+    let skillCounter = 1;
+
+    addSkillButton.addEventListener('click', () => {
+      skillCounter++;
+
+      const newSkillHtml = `
+        <input type="text" id="Skills${skillCounter}" name="Skills[]" required>
+        <br>
+      `;
+
+      skillsContainer.insertAdjacentHTML('beforeend', newSkillHtml);
+    });
 
     addEducationButton.addEventListener('click', () => {
       educationCounter++;
@@ -211,9 +228,12 @@
     });
 
     saveButton.addEventListener('click', () => {
+    const skills = [];
       const education = [];
       const experience = [];
       const achievements = [];
+
+      const skillInputs = document.querySelectorAll('input[name^="Skills"]');
 
       const educationNameInputs = document.querySelectorAll('input[name^="SchoolName"]');
       const educationYearInputs = document.querySelectorAll('input[name^="EducationYear"]');
@@ -224,6 +244,13 @@
       const achievementTypeInputs = document.querySelectorAll('input[name^="AchievementType"]');
       const achievementDescriptionInputs = document.querySelectorAll('textarea[name^="AchievementDescription"]');
 
+
+      skillInputs.forEach((input) => {
+        const skill = input.value.trim();
+        if (skill !== '') {
+          skills.push(skill);
+        }
+      });
       for (let i = 0; i < educationCounter; i++) {
         const name = educationNameInputs[i].value;
         const year = educationYearInputs[i].value;
@@ -266,6 +293,12 @@
       }
 
       // Create hidden input fields to store the JSON data
+      const skillsInput = document.createElement('input');
+      skillsInput.type = 'hidden';
+      skillsInput.name = 'Skills';
+      skillsInput.value = JSON.stringify(skills);
+      form.appendChild(skillsInput);
+      
       const educationInput = document.createElement('input');
       educationInput.type = 'hidden';
       educationInput.name = 'Education';
