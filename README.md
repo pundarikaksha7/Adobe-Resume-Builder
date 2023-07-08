@@ -63,7 +63,7 @@ This is the main API. It can accept responses via various methods such as HTTP R
 Run the following command in your command prompt/terminal to run Curl command:
 
 ```shell
-nodemon apiiindex.js
+node apiiindex.js
 ```
 
 This would input a ```curl``` request in another terminal window, port set at ```localhost:3000/```, and would directly output a ```.pdf``` file inside the ```output``` directory.
@@ -77,7 +77,7 @@ This file uses a slightly modified version of the above mentioned API to accept 
 Run the following command in your command prompt/terminal :
 
 ```shell
-nodemon index.js
+node index.js
 ```
 
 This would start a native server at ```localhost:3000/``` , go to the server and follow the on screen commands to generate your own resume!.
@@ -102,6 +102,8 @@ Both methods would create the pdf inside `output` folder.
 ```index.js``` contains the driver code for API Call with UI.
 
 ```apiindex.js``` contains the driver code for API.
+
+```apiindex.test.js``` runs tests on the API and stores them in ```output```
 
 ## PS
 This is not a website, it is a Node JS application. Being a python developer, it was fun learning a new framework to solve a certain problem.
