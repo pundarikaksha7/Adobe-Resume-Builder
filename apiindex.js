@@ -39,7 +39,9 @@ app.use(bodyParser.json());
 var path='';
 
 
-
+app.get('/success',(req,res)=>{
+  res.send("PDF created successfully. Find it inside output directory.");
+})
 
 
 // Resume Builder API route
