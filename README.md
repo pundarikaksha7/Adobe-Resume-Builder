@@ -1,5 +1,5 @@
 # Adobe-Resume-Builder-Project
-This project is a resume builder application which accepts data from the user from a webpage or a Curl request, processes it and returns a ```.pdf``` file using Adobe's Document Merge API.
+This project is a resume builder application which accepts data from the user from a webpage or a Curl request, processes it and returns a ```.pdf``` file using Adobe's Document Generation API.
 
 
 This is my solution for Adobe's Papyrus Nebulae Hackathon's second round.
