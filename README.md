@@ -27,7 +27,11 @@ For this project to run, node modules must be present inside your project direct
     "ejs": "^3.1.9",
     "express": "^4.18.2",
     "express-session": "^1.17.3",
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "supertest": "^6.3.3"
+  },
+  "devDependencies": {
+    "jest": "^29.6.1"
   }
 ```
 
