@@ -36,7 +36,7 @@ app.use(bodyParser.json());
 
 
 
-var path=docPaths+'BasicTemplate.docx';
+var path='';
 
 
 
@@ -177,3 +177,4 @@ function createOutputFilePath() {
   return  resultPaths+ dateString + '.pdf';
 }
 
+module.exports = app;
