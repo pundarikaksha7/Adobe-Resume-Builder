@@ -98,6 +98,8 @@ app.post('/resume', async (req, res) => {
       const achievements = JSON.parse(Achievements);
       const education=JSON.parse(Education);
       const experience=JSON.parse(Experience);
+     
+      console.log(Skills.slice(0,-1));
 
       console.log(achievements);
   
@@ -112,10 +114,10 @@ app.post('/resume', async (req, res) => {
         LastName: LastName,
         EmailAddress: EmailAddress,
         PhoneNumber: PhoneNumber,
-        LinkedIn:"https://www.linkedin.com"+ LinkedIn,
+        LinkedIn:"https://www.linkedin.com/"+ LinkedIn,
         JobTitle: JobTitle,
         Summary: Summary,
-        Skills: Skills.split(' ').map(skill => skill.trim()),
+        Skills: Skills.slice(0,-1),
         Education: education,
         Experience: experience,
         Achievements: achievements
