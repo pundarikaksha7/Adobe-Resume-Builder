@@ -84,7 +84,9 @@ This would start a native server at ```localhost:3000/``` , go to the server and
 
 Both methods would create the pdf inside `output` folder.
 
+## Testing
 
+Testing of the API is done using ```apiindex.test.js``` using ```Jest``` testing framework. It tests the API against all three templates, different datasets and invalid template ID.
 
 
 ## Files Structure
