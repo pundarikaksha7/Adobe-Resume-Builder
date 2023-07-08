@@ -2,7 +2,7 @@ curl --location 'http://localhost:3000/resume' \
 --header 'Accept: application/pdf' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-  "template_id" : "3",
+  "template_id" : "1",
   "personal_information" : {
     "name": "Lorem",
     "last_name": "ipsum",
