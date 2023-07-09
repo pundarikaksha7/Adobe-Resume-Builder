@@ -67,7 +67,7 @@ This is the main API. It can accept responses via various methods such as HTTP R
 Run the following command in your command prompt/terminal to run Curl command:
 
 ```shell
-node apiiindex.js
+node apiindex.js
 ```
 
 This would input a ```curl``` request in another terminal window, port set at ```localhost:3000/```, and would directly output a ```.pdf``` file inside the ```output``` directory.
