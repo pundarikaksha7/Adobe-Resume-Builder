@@ -1,4 +1,4 @@
-curl --location 'http://localhost:3000/resume' \
+curl --location 'http://localhost:8080/resume' \
 --header 'Accept: application/pdf' \
 --header 'Content-Type: application/json' \
 --data-raw '{
