@@ -69,7 +69,7 @@ This file implements the primary API endpoint, which can handle requests using v
 node apiindex.js
 ```
 
-This would input a ```curl``` request in another terminal window, port set at ```localhost:3000/resume```, and would directly output a ```.pdf``` file inside the ```output``` directory.
+This would input a ```curl``` request in another terminal window, port set at ```localhost:8080/resume```, and would directly output a ```.pdf``` file inside the ```output``` directory.
 
 Important: The server should be up and running for this to work. If you wish to use a different port, change it inside ```apiindex.js``` .
 
@@ -81,7 +81,7 @@ Run the following command in your command prompt/terminal :
 node apiindex.js
 ```
 
-This would start a native server at ```localhost:3000/resume``` , go to the server and follow the on screen commands to generate your own resume!.
+This would start a native server at ```localhost:8080/resume``` , go to the server and follow the on screen commands to generate your own resume!.
 
 Important: The server should be up and running for this to work. If you wish to use a different port, change it inside ```apiindex.js``` .
 
