@@ -63,27 +63,25 @@ export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>
 
 ## Method 1: Resume Builder API
 
-This file contains the main API endpoint, which can receive responses through different methods like HTTP Response and Curl response. To execute the Curl command and interact with the API endpoint, please run the following command in your command prompt/terminal.
+This file contains the main API endpoint, which can receive requests through different methods like HTTP Response via GET request and Curl requests. To execute the Curl command and interact with the API endpoint, please run the following command in your command prompt/terminal.
 
 ```shell
 node apiindex.js
 ```
 
-This would input a ```curl``` request in another terminal window, port set at ```localhost:3000/```, and would directly output a ```.pdf``` file inside the ```output``` directory.
+This would input a ```curl``` request in another terminal window, port set at ```localhost:3000/resume```, and would directly output a ```.pdf``` file inside the ```output``` directory.
 
 Important: The server should be up and running for this to work.
 
 ## Method 2: Resume Builder UI
 
-This file uses a slightly modified version of the above mentioned API to accept responses from user-friendly webpages.
-
 Run the following command in your command prompt/terminal :
 
 ```shell
-node index.js
+node apiindex.js
 ```
 
-This would start a native server at ```localhost:3000/``` , go to the server and follow the on screen commands to generate your own resume!.
+This would start a native server at ```localhost:3000/resume``` , go to the server and follow the on screen commands to generate your own resume!.
 
 Both methods would create the pdf inside `output` folder.
 
