@@ -1,3 +1,15 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
+const fs = require('fs');
+
+const app = express();
+app.set('view engine', 'ejs'); 
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(express.static('static')); 
+
+
 //path variables
 let docPaths="templates/";
 let resultPaths="output/";
@@ -25,23 +37,32 @@ const templateOptions = [
 ];
 
 
-const express = require('express');
-const bodyParser = require('body-parser');
-const PDFServicesSdk = require('@adobe/pdfservices-node-sdk');
-const fs = require('fs');
-
-const app = express();
-app.use(bodyParser.json());
-
-
-
-
 var path='';
 
 
-app.get('/success',(req,res)=>{
-  res.send("PDF created successfully. Find it inside output directory.");
-})
+app.get('/success', (req, res) => {
+  const isJsonRequest = req.headers['content-type'] === 'application/json';
+  if (isJsonRequest) {
+    res.send("PDF created successfully. Find it inside the output directory.");
+  } else {
+    res.render('end');
+  }
+});
+
+
+app.get('/resume', (req, res) => {
+  const isCurlRequest = req.headers['content-type'] === 'application/json';
+  if (isCurlRequest) {
+    
+    const curlData = extractDataFromCurlCommand(req.body);
+   
+    res.json(curlData);
+
+  } else {
+    // Handle GET request
+    res.render('api-resume-form', { templateOptions });
+  }
+});
 
 
 // Resume Builder API route
@@ -65,7 +86,7 @@ app.post('/resume', async (req, res) => {
         achievements
       } = req.body;
     
-      // Access the data from the cURL command
+      // Access the data
       console.log('Template ID:', template_id);
       console.log('Personal Information:', personal_information);
       console.log('Job Title:', job_title);
@@ -91,27 +112,27 @@ app.post('/resume', async (req, res) => {
           return;
       }
 
-      
-  
-      const educationItems = education.map(item => ({
-        SchoolName: item.school_name,
-        Year: item.passing_year,
-        Description: item.description
+      const educationItems = (education || []).map(item => ({
+        SchoolName: item.school_name || '',
+        Year: item.passing_year || '',
+        Description: item.description || ''
       }));
       
       // Process Experience
-      const experienceItems = experience.map(item => ({
-        CompanyName: item.company_name,
-        Year: item.passing_year,
-        Description: item.responsibilities
+      const experienceItems = (experience || []).map(item => ({
+        CompanyName: item.company_name || '',
+        Year: item.passing_year || '',
+        Description: item.responsibilities || ''
       }));
       
       // Process Achievements
-      const achievementItems = achievements.map(item => ({
-        Type: item.field,
-        Description: item.awards
+      const achievementItems = (achievements || []).map(item => ({
+        Type: item.field || '',
+        Description: item.awards || ''
       }));
-  
+
+
+      
       // Create an ExecutionContext using credentials
       const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
   
