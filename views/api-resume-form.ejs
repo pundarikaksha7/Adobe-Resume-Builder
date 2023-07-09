@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Resume Builder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      text-align: center;
+      color: #444;
+      margin-top: 40px;
+    }
+
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 40px;
+      padding-right: 65px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      margin-bottom: 15px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 16px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    .section {
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      margin-top: 0;
+      color: #555;
+    }
+
+    .template-options {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .template-option {
+      flex: 1;
+      margin-right: 10px;
+      text-align: center;
+      background-color: #f8f8f8;
+      border-radius: 5px;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .template-image {
+      max-width: 100%;
+      height: auto;
+      cursor: pointer;
+    }
+
+    .template-option:hover {
+      transform: scale(1.05);
+    }
+
+    .template-option.selected-template {
+  transform: scale(1.05);
+} 
+    
+    
+  </style>
+</head>
+<body>
+  <h1>Resume Builder</h1>
+  <div class="template-options">
+    <div class="template-option" id="templateOption1" onclick="selectTemplate('1')">
+      <img class="template-image" src="<%=templateOptions[0].image %>" alt="Template 1">
+    </div>
+    <div class="template-option" id="templateOption2" onclick="selectTemplate('2')">
+      <img class="template-image" src="<%=templateOptions[1].image %>" alt="Template 2">
+    </div>
+    <div class="template-option" id="templateOption3" onclick="selectTemplate('3')">
+      <img class="template-image" src="<%=templateOptions[2].image %>" alt="Template 3">
+    </div>
+  </div>
+  
+  <form id="resumeForm" action="/resume" method="POST">
+    <input type="hidden" id="template_id" name="template_id" value="">
+    
+    <div class="section">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="personal_information[name]" required>
+    </div>
+    <div class="section">
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" name="personal_information[last_name]" required>
+    </div>
+    <div class="section">
+      <label for="emailAddress">Email Address:</label>
+      <input type="email" id="emailAddress" name="personal_information[email_address]" required>
+    </div>
+    <div class="section">
+      <label for="phoneNumber">Phone Number:</label>
+      <input type="text" id="phoneNumber" name="personal_information[phone_number]" required>
+    </div>
+    <div class="section">
+      <label for="linkedinUrl">LinkedIn URL:</label>
+      <input type="text" id="linkedinUrl" name="personal_information[linkedin_url]" required>
+    </div>
+    <div class="section">
+      <label for="jobTitle">Job Title:</label>
+      <input type="text" id="jobTitle" name="job_title" required>
+    </div>
+    <div class="section">
+      <label for="careerObjective">Career Objective:</label>
+      <textarea id="careerObjective" name="career_objective" required></textarea>
+    </div>
+    <div class="section">
+      <label for="skills">Skills:</label>
+      <div id="skillsContainer">
+        <input type="text" id="skills" name="skills[]" required>
+      </div>
+      <button type="button" id="addSkillButton" onclick="addSkill()">Add Skill</button>
+    </div>
+
+    <div id="educationContainer" class="section">
+      <h3>Education</h3>
+      <div id="educationItemsContainer"></div>
+
+      <button type="button" id="addEducationButton" onclick="addEducation()">Add Education</button>
+    </div>
+
+    <div id="experienceContainer" class="section">
+      <h3>Experience</h3>
+      <div id="experienceItemsContainer"></div>
+      <button type="button" id="addExperienceButton" onclick="addExperience()">Add Experience</button>
+    </div>
+
+    <div id="achievementsContainer" class="section">
+      <h3>Achievements</h3>
+      <div id="achievementItemsContainer"></div>
+      <button type="button" id="addAchievementButton" onclick="addAchievement()">Add Achievement</button>
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    function selectTemplate(templateId) {
+      const templateOptions = document.querySelectorAll('.template-option');
+
+      templateOptions.forEach((option) => {
+        if (option.id === `templateOption${templateId}`) {
+          option.classList.add('selected-template');
+        } else {
+          option.classList.remove('selected-template');
+        }
+      });
+
+      const templateIdInput = document.getElementById('template_id');
+      templateIdInput.value = templateId;
+    }
+
+
+    function addSkill() {
+      const skillsContainer = document.getElementById('skillsContainer');
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.name = 'skills[]';
+      input.required = true;
+      skillsContainer.appendChild(input);
+    }
+
+    function addEducation() {
+      const educationContainer = document.getElementById('educationItemsContainer');
+      const educationItem = document.createElement('div');
+      const schoolNameInput = document.createElement('input');
+      const passingYearInput = document.createElement('input');
+      const descriptionTextarea = document.createElement('textarea');
+
+      schoolNameInput.type = 'text';
+      schoolNameInput.name = `education[${educationContainer.children.length}][school_name]`;
+      schoolNameInput.required = true;
+
+      passingYearInput.type = 'text';
+      passingYearInput.name = `education[${educationContainer.children.length}][passing_year]`;
+      passingYearInput.required = true;
+
+      descriptionTextarea.name = `education[${educationContainer.children.length}][description]`;
+      descriptionTextarea.required = true;
+
+      educationItem.appendChild(document.createTextNode('School/College Name:'));
+      educationItem.appendChild(document.createElement('br'));
+      educationItem.appendChild(schoolNameInput);
+      educationItem.appendChild(document.createElement('br'));
+      educationItem.appendChild(document.createTextNode('Graduating Year:'));
+      educationItem.appendChild(document.createElement('br'));
+      educationItem.appendChild(passingYearInput);
+      educationItem.appendChild(document.createElement('br'));
+      educationItem.appendChild(document.createTextNode('Education Description:'));
+      educationItem.appendChild(document.createElement('br'));
+      educationItem.appendChild(descriptionTextarea);
+
+      educationContainer.appendChild(educationItem);
+    }
+
+    function addExperience() {
+      const experienceContainer = document.getElementById('experienceItemsContainer');
+      const experienceItem = document.createElement('div');
+      const companyNameInput = document.createElement('input');
+      const passingYearInput = document.createElement('input');
+      const descriptionTextarea = document.createElement('textarea');
+
+      companyNameInput.type = 'text';
+      companyNameInput.name = `experience[${experienceContainer.children.length}][company_name]`;
+      companyNameInput.required = true;
+
+      passingYearInput.type = 'text';
+      passingYearInput.name = `experience[${experienceContainer.children.length}][passing_year]`;
+      passingYearInput.required = true;
+
+      descriptionTextarea.name = `experience[${experienceContainer.children.length}][responsibilities]`;
+      descriptionTextarea.required = true;
+
+      experienceItem.appendChild(document.createTextNode('Company Name:'));
+      experienceItem.appendChild(document.createElement('br'));
+      experienceItem.appendChild(companyNameInput);
+      experienceItem.appendChild(document.createElement('br'));
+      experienceItem.appendChild(document.createTextNode('Experience Years:'));
+      experienceItem.appendChild(document.createElement('br'));
+      experienceItem.appendChild(passingYearInput);
+      experienceItem.appendChild(document.createElement('br'));
+      experienceItem.appendChild(document.createTextNode('Experience Description:'));
+      experienceItem.appendChild(document.createElement('br'));
+      experienceItem.appendChild(descriptionTextarea);
+
+      experienceContainer.appendChild(experienceItem);
+    }
+
+    function addAchievement() {
+      const achievementContainer = document.getElementById('achievementItemsContainer');
+      const achievementItem = document.createElement('div');
+      const fieldInput = document.createElement('input');
+      const awardsInput = document.createElement('input');
+
+      fieldInput.type = 'text';
+      fieldInput.name = `achievements[${achievementContainer.children.length}][field]`;
+      fieldInput.required = true;
+
+      awardsInput.type = 'text';
+      awardsInput.name = `achievements[${achievementContainer.children.length}][awards]`;
+      awardsInput.required = true;
+
+      achievementItem.appendChild(document.createTextNode('Achievement Field:'));
+      achievementItem.appendChild(document.createElement('br'));
+      achievementItem.appendChild(fieldInput);
+      achievementItem.appendChild(document.createElement('br'));
+      achievementItem.appendChild(document.createTextNode('Achievement Awards:'));
+      achievementItem.appendChild(document.createElement('br'));
+      achievementItem.appendChild(awardsInput);
+
+      achievementContainer.appendChild(achievementItem);
+    }
+  </script>
+</body>
+</html>
