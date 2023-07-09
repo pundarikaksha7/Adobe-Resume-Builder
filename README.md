@@ -83,11 +83,16 @@ node apiindex.js
 
 This would start a native server at ```localhost:3000/resume``` , go to the server and follow the on screen commands to generate your own resume!.
 
+Important: The server should be up and running for this to work. If you wish to use a different port, change it inside ```apiindex.js``` .
+
 Both methods would create the pdf inside `output` folder.
 
 ## Testing
 
 Testing of the API is done using ```apiindex.test.js``` using ```Jest``` testing framework. It tests the API against all three templates, different datasets and invalid template ID.
+
+
+Important: Make sure that your client id and secret keys have been mentioned in the console before running the tests.
 
 
 ## Files Structure
