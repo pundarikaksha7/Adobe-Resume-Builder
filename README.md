@@ -71,7 +71,7 @@ node apiindex.js
 
 This would input a ```curl``` request in another terminal window, port set at ```localhost:3000/resume```, and would directly output a ```.pdf``` file inside the ```output``` directory.
 
-Important: The server should be up and running for this to work.
+Important: The server should be up and running for this to work. If you wish to use a different port, change it inside ```apiindex.js``` .
 
 ## Method 2: Resume Builder UI
 
