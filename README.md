@@ -2,7 +2,7 @@
 This project is a resume builder application which accepts data from the user from a webpage or a Curl request, processes it and returns a ```.pdf``` file using Adobe's Document Generation API.
 
 
-This is my solution for Adobe's Papyrus Nebulae Hackathon's second round.
+This is my solution for Adobe's Papyrus Nebulae Hackathon's second round, built on Node JS framework.
 
 # Documentation
 
@@ -11,7 +11,6 @@ Clone the repository to your local machine by running the following command insi
 ```shell
 git clone "https://github.com/pundarikaksha7/AdobeRound-2.git"
 ```
-
 
 
 ## Dependencies
@@ -63,34 +62,55 @@ export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>
 
 ## Method 1: Resume Builder API
 
-This file implements the primary API endpoint, which can handle requests using various methods such as HTTP GET requests and Curl commands. To interact with the API endpoint via Curl or other methods, please execute the following command in your command prompt or terminal.
+```app.js``` implements the primary API endpoint, which can handle requests using various methods such as HTTP GET requests and Curl requests. To interact with the API endpoint via Curl or other methods, please execute the following commands in your command prompt or terminal.
+
+Step1: Change directory into ```src```
 
 ```shell
-node apiindex.js
+cd src
+```
+
+Step 2: Run the following command inside your command prompt / terminal.
+
+```shell
+node app.js
 ```
 
 This would input a ```curl``` request in another terminal window, port set at ```localhost:8080/resume```, and would directly output a ```.pdf``` file inside the ```output``` directory.
 
-Important: The server should be up and running for this to work. If you wish to use a different port, change it inside ```apiindex.js``` .
+Important: The server should be up and running for this to work. If you wish to use a different port, change it inside ```app.js``` .
 
 ## Method 2: Resume Builder UI
 
-Run the following command in your command prompt/terminal :
+Step1: Change directory into ```src```
 
 ```shell
-node apiindex.js
+cd src
 ```
 
-This would start a native server at ```localhost:8080/resume``` , go to the server and follow the on screen commands to generate your own resume!.
+Step 2: Run the following command inside your command prompt / terminal.
 
-Important: The server should be up and running for this to work. If you wish to use a different port, change it inside ```apiindex.js``` .
+```shell
+node app.js
+```
+
+This would start a native server at ```localhost:8080/resume``` , go to the server and follow the on screen commands to generate your own resume!
+
+On clicking submit, wait for 15 seconds as your API keys are being verified by Adobe's servers and the PDF is being generated.
+
+Important: The server should be up and running for this to work. If you wish to use a different port, change it inside ```app.js``` .
 
 Both methods would create the pdf inside `output` folder.
 
 ## Testing
 
-Testing of the API is done using ```apiindex.test.js``` using ```Jest``` testing framework. It tests the API against all three templates, different datasets and invalid template ID.
+Testing of the API is done using ```app.test.js``` inside  ```src``` directory, using ```Jest``` testing framework. It tests the API against all three templates, different datasets and invalid template ID. 
 
+To test the algorithms, run the following command while being in ```src``` directory.
+
+```shell
+npm test
+```
 
 Important: Make sure that your client id and secret keys have been mentioned in the console before running the tests.
 
@@ -107,11 +127,7 @@ Important: Make sure that your client id and secret keys have been mentioned in 
 
 ```static``` contains images for template selection during making of custom resume.
 
-```index.js``` contains the driver code for API Call with UI.
-
-```apiindex.js``` contains the driver code for API.
-
-```apiindex.test.js``` runs tests on the API and stores them in ```output```
+```src``` contains modularized code files
 
 ## PS
 This is not a website, it is a Node JS application. Being a python developer, it was fun learning a new framework to solve a certain problem.

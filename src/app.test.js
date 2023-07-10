@@ -1,5 +1,6 @@
 const request = require('supertest');
-const app = require('./apiindex');
+// const app = require('./apiindex');
+const app=require('./app');
 
 describe('Resume Builder API', () => {
   it('should generate a resume PDF', async () => {

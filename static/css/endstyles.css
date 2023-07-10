@@ -1,0 +1,30 @@
+
+    * {
+  box-sizing: border-box;
+}
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .success-message {
+      text-align: center;
+      margin-top: 100px;
+      font-size: 24px;
+      font-weight: bold;
+      border: 2px solid #333;
+      background-color: #80dc58;
+      padding: 20px;
+      border-radius: 5px;
+    }
+    .author-info {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 18px;
+      color: black;
+      font-weight: 600;
+    }
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
