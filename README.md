@@ -125,7 +125,7 @@ Important: Make sure that your client id and secret keys have been mentioned in 
 
 ```templates``` contains .docx files of sample templates.
 
-```static``` contains images for template selection during making of custom resume.
+```static``` contains images, ```.css``` files and ```.js``` files for UI component of the project.
 
 ```src``` contains modularized code files
 
