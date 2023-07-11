@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const routes = require('./routes');
-const port = 8080;
+const port = process.env.PORT||8080;
 const path=require('path');
 
 const viewsPath = path.join(__dirname, '..', 'views');
