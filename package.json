@@ -6,8 +6,6 @@
   "scripts": {
     "start":"node src/app.js",
     "test": "jest",
-    "build":"npm run build"
-
   },
   "repository": {
     "type": "git",
