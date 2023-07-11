@@ -73,7 +73,7 @@ cd src
 Step 2: Run the following command inside your command prompt / terminal.
 
 ```shell
-node app.js
+npm start
 ```
 
 This would input a ```curl``` request in another terminal window, port set at ```localhost:8080/resume```, and would directly output a ```.pdf``` file inside the ```output``` directory.
@@ -91,7 +91,7 @@ cd src
 Step 2: Run the following command inside your command prompt / terminal.
 
 ```shell
-node app.js
+npm start
 ```
 
 This would start a native server at ```localhost:8080/resume``` , go to the server and follow the on screen commands to generate your own resume!
@@ -104,7 +104,7 @@ Both methods would create the pdf inside `output` folder.
 
 ## Testing
 
-Testing of the API is done using ```app.test.js``` inside  ```src``` directory, using ```Jest``` testing framework. It tests the API against all three templates, different datasets and invalid template ID. 
+Testing of the API is done by ```app.test.js``` inside  ```src``` directory, using ```Jest``` testing framework. It tests the API against all three templates, different datasets, invalid template IDs and invalid client credentials. 
 
 To test the algorithms, run the following command while being in ```src``` directory.
 
