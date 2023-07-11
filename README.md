@@ -64,13 +64,7 @@ export PDF_SERVICES_CLIENT_SECRET=<YOUR CLIENT SECRET>
 
 ```app.js``` implements the primary API endpoint, which can handle requests using various methods such as HTTP GET requests and Curl requests. To interact with the API endpoint via Curl or other methods, please execute the following commands in your command prompt or terminal.
 
-Step1: Change directory into ```src```
-
-```shell
-cd src
-```
-
-Step 2: Run the following command inside your command prompt / terminal.
+Run the following command inside your command prompt / terminal.
 
 ```shell
 npm start
@@ -82,13 +76,7 @@ Important: The server should be up and running for this to work. If you wish to 
 
 ## Method 2: Resume Builder UI
 
-Step1: Change directory into ```src```
-
-```shell
-cd src
-```
-
-Step 2: Run the following command inside your command prompt / terminal.
+Run the following command inside your command prompt / terminal.
 
 ```shell
 npm start
