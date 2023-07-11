@@ -22,6 +22,10 @@
       {
         "src": "/output/(.*)",
         "dest": "/output/$1"
-      }
+      },
+        {
+      "src": "/(.*)",
+      "dest": "/src/app.js"
+    }
     ]
   }
