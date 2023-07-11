@@ -7,6 +7,7 @@ let resultPaths = path.join(__dirname, '..', 'output/');
 
 
 
+
 function createOutputFilePath() {
     const date = new Date();
     const dateString =
