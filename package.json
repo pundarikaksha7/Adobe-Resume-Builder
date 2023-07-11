@@ -4,6 +4,7 @@
   "description": "This project would aim at solving adobe round 2 PS",
   "main": "index.js",
   "scripts": {
+    "start":"node src/app.js",
     "test": "jest"
   },
   "repository": {
