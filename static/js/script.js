@@ -114,3 +114,15 @@
 
       achievementContainer.appendChild(achievementItem);
     }
+    function validateForm() {
+      // Check if a template option is selected
+      var templateId = document.getElementById('template_id').value;
+      if (templateId === '') {
+        alert('Please select a template option');
+        event.preventDefault(); 
+      }
+      
+    }
+  
+    // Attach the form validation to the form's submit event
+    document.getElementById('resumeForm').addEventListener('submit', validateForm);
