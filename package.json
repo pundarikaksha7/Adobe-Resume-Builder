@@ -2,10 +2,7 @@
   "name": "adobe-round-2",
   "version": "1.0.0",
   "description": "This project would aim at solving adobe round 2 PS",
-  "main": "index.js",
-  "engines":{
-    "node":"18.x"
-  },
+  "main": "src/app.js",
   "scripts": {
     "start":"node src/app.js",
     "test": "jest"
