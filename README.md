@@ -94,13 +94,13 @@ Both methods would create the pdf inside `output` folder.
 
 Testing of the API is done by ```app.test.js``` inside  ```src``` directory, using ```Jest``` testing framework. It tests the API against all three templates, different datasets, invalid template IDs and invalid client credentials. 
 
-To test the algorithms, run the following command while being in ```src``` directory.
+To test the algorithms, run the following command.
 
 ```shell
 npm test
 ```
 
-Important: Make sure that your client id and secret keys have been mentioned in the console before running the tests.
+Important: Make sure that your client id and secret keys have been set in the console before running the tests.
 
 
 ## Files Structure
