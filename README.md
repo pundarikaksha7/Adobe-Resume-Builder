@@ -13,7 +13,7 @@ This website is deployed on Vercel, utilizing the API developed from this reposi
 
 Source code of the deployed website resides in the ```deploy``` branch of the same repository.
 
-Please note that the provided link is solely for demonstration purposes and is not used for commercial deployment.
+Please note that the provided link is solely for demonstration purposes and is not used for commercial deployment. PDF generation process is being validated by my own API credentials.
 
 
 
