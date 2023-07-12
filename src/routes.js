@@ -166,4 +166,3 @@ router.post('/resume', async (req, res) => {
 });
 
 module.exports = router;
-

@@ -1,95 +1,113 @@
+body {
+  font-family: "Adobe Clean", Arial, sans-serif;
+  background-color: #fff;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+ 
+}
 
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
-      color: #333;
-      margin: 0;
-      padding: 0;
-    }
+.logo {
+  width: 150px;
+  padding: 5px;
+  margin-top: 50px;
+}
 
-    h1 {
-      text-align: center;
-      color: #444;
-      margin-top: 40px;
-    }
+h1 {
+  text-align: center;
+  color: #090909;
+  margin-top: 70px;
+  font-family: "Adobe Clean", Arial, sans-serif;
+  font-weight: 900;
+}
 
-    form {
-      max-width: 600px;
-      margin: 0 auto;
-      background-color: #fff;
-      padding: 40px;
-      padding-right: 65px;
-      border-radius: 5px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 40px;
+  padding-right: 65px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-    label {
-      display: block;
-      margin-bottom: 5px;
-      font-weight: bold;
-    }
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #444;
+}
 
-    input,
-    textarea {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 3px;
-      margin-bottom: 15px;
-      font-size: 14px;
-      color: #333;
-    }
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  color: #333;
+  font-family: "Adobe Clean", Arial, sans-serif;
+}
 
-    textarea {
-      resize: vertical;
-    }
+textarea {
+  resize: vertical;
+}
 
-    button {
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      padding: 10px 16px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
+button {
+  background-color: #FF0000;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: "Adobe Clean", Arial, sans-serif;
+}
 
-    button:hover {
-      background-color: #0056b3;
-    }
+button:hover {
+  background-color: #870202;
+}
 
-    button:disabled {
-      background-color: #ccc;
-      cursor: not-allowed;
-    }
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
 
-    .section {
-      margin-bottom: 30px;
-    }
+.section {
+  margin-bottom: 30px;
+}
 
-    h3 {
-      margin-top: 0;
-      color: #555;
-    }
+h3 {
+  margin-top: 0;
+  color: #555;
+  font-family: "Adobe Clean", Arial, sans-serif;
+}
 
-    .template-options {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 30px;
-    }
+.template-options {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  margin-top:20px;
+}
 
-    .template-option {
-      flex: 1;
-      margin-right: 10px;
-      text-align: center;
-      background-color: #f8f8f8;
-      border-radius: 5px;
-      padding: 20px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
+.template-option {
+  flex: 1;
+  margin-right: 10px;
+  text-align: center;
+  background-color: #f8f8f8;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
 
     .template-image {
       max-width: 100%;
@@ -104,5 +122,4 @@
     .template-option.selected-template {
   transform: scale(1.05);
 } 
-    
     
