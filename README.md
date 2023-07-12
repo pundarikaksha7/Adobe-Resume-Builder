@@ -121,7 +121,7 @@ Important: Make sure that your client id and secret keys have been set in the co
 ```src``` contains modularized code files
 
 ## PS
-This is not a website, it is a Node JS application. Being a python developer, it was fun learning a new framework to solve a certain problem.
+Being a python developer, it was fun learning a new framework to solve a certain problem.
 
 Thanks!
 
