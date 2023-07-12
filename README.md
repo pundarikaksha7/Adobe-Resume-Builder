@@ -1,7 +1,9 @@
 # Adobe-Resume-Builder-Project
 This project is a resume builder application which accepts data from the user from a webpage or a Curl request, processes it and returns a ```.pdf``` file using Adobe's Document Generation API.
 
-You can find a demonstration at https://adobe-resume-builder-4dvofrzd7-pundarikaksha7.vercel.app/resume
+You can find the demonstration at https://adobe-resume-builder-4dvofrzd7-pundarikaksha7.vercel.app/resume
+
+Important: The above link is just for demonstration and is not to be used for deployment for commercial purposes.
 
 This is my solution for Adobe's Papyrus Nebulae Hackathon's second round, built on Node JS framework.
 
