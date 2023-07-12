@@ -3,7 +3,7 @@ const path=require('path');
 
 //path variables
 let docPaths = path.join(__dirname, '..', 'templates/');
-let resultPaths = path.join(__dirname, '..', 'output/');
+let resultPaths = path.join(__dirname, '..', 'tmp/');
 
 
 
