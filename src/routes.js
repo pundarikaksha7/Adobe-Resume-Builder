@@ -157,20 +157,16 @@ router.post('/resume', async (req, res) => {
 
     // Execute the operation and save the result to the specified location
     const result = await documentMergeOperation.execute(executionContext);
-    await result.saveAsFile(outputFilePath);
+    let writeStream = fs.createWriteStream(`/tmp/${outputFilePath}.pdf`);
+    await result.saveAsFile(writeStream);
 
-     // Read the saved file
-     const fileData = fs.readFileSync(outputFilePath);
-
-     // Delete the temporary file
-     fs.unlinkSync(outputFilePath);
  
      // Set the response headers for file download
      res.setHeader('Content-Type', 'application/pdf');
      res.setHeader('Content-Disposition', `attachment; filename="resume.pdf"`);
  
      // Send the file data as a download attachment
-     res.send(fileData);
+     res.send(writeStream);
    } catch (err) {
      console.log('Exception encountered while executing operation', err);
      res.status(500).json({ error: 'An error occurred while generating the resume.' });
