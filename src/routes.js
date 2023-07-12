@@ -3,8 +3,10 @@ const router = express.Router();
 const resumeUtils = require('./resumeUtils');
 const docPaths = resumeUtils.docPaths;
 const PDFServicesSdk = resumeUtils.PDFServicesSdk;
+const path=require('path');
+const fs=require('fs');
 
-let path = '';
+let pathDir = '';
 
 const templateOptions = [
   {
@@ -90,13 +92,13 @@ router.post('/resume', async (req, res) => {
     
     switch (template_id) {
       case '1':
-        path = templateOptions[0].docPath; // BasicTemplate
+        pathDir = templateOptions[0].docPath; // BasicTemplate
         break;
       case '2':
-        path = templateOptions[1].docPath; // ImageTemplate
+        pathDir = templateOptions[1].docPath; // ImageTemplate
         break;
       case '3':
-        path = templateOptions[2].docPath; // LinkTemplate
+        pathDir = templateOptions[2].docPath; // LinkTemplate
         break;
       default:
         // Handle the case when template_id is not found
@@ -147,7 +149,7 @@ router.post('/resume', async (req, res) => {
     const documentMergeOperation = documentMerge.Operation.createNew(options);
 
     // Set operation input document template from a source file
-    const input = PDFServicesSdk.FileRef.createFromLocalFile(path);
+    const input = PDFServicesSdk.FileRef.createFromLocalFile(pathDir);
     documentMergeOperation.setInput(input);
 
     // Generate a file name
@@ -157,12 +159,22 @@ router.post('/resume', async (req, res) => {
     const result = await documentMergeOperation.execute(executionContext);
     await result.saveAsFile(outputFilePath);
 
-    // Return the generated resume file path as the response
-    res.redirect('/success');
-  } catch (err) {
-    console.log('Exception encountered while executing operation', err);
-    res.status(500).json({ error: 'An error occurred while generating the resume.' });
-  }
-});
+     // Read the saved file
+     const fileData = fs.readFileSync(outputFilePath);
+
+     // Delete the temporary file
+     fs.unlinkSync(outputFilePath);
+ 
+     // Set the response headers for file download
+     res.setHeader('Content-Type', 'application/pdf');
+     res.setHeader('Content-Disposition', `attachment; filename="resume.pdf"`);
+ 
+     // Send the file data as a download attachment
+     res.send(fileData);
+   } catch (err) {
+     console.log('Exception encountered while executing operation', err);
+     res.status(500).json({ error: 'An error occurred while generating the resume.' });
+   }
+ });
 
 module.exports = router;
