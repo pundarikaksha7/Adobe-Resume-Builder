@@ -84,8 +84,8 @@ describe('Resume Builder API', () => {
       .post('/resume')
       .send(requestBody);
 
-    expect(response.statusCode).toBe(400);
-    expect(response.body.error).toBe('Invalid template_id');
+    expect(response.statusCode).toBe(404);
+    expect(response.body.error).toBe('Template not found');
   });
 
   it('should generate a resume PDF with template 2', async () => {
@@ -488,6 +488,7 @@ describe('Resume Builder API', () => {
     expect(response.headers.location).toBe('/success');
   },1000000);
 
+
   // Test case with empty skills
   it('should generate a resume PDF with empty skills', async () => {
     const requestBody = {
@@ -530,6 +531,7 @@ describe('Resume Builder API', () => {
     expect(response.statusCode).toBe(302);
     expect(response.headers.location).toBe('/success');
   },1000000);
+
 
   it('should return error for invalid client details', async () => {
     const requestBody = {
@@ -574,8 +576,8 @@ describe('Resume Builder API', () => {
       .post('/resume')
       .send(requestBody);
 
-    expect(response.statusCode).toBe(500);
-    expect(response.body.error).toBe("An error occurred while generating the resume.");
+    expect(response.statusCode).toBe(401);
+    expect(response.body.error).toBe("Unauthorised");
   }, 1000000);
 
 
