@@ -39,25 +39,29 @@ router.get('/success', (req, res) => {
   }
 });
 
+
 router.get('/resume', (req, res) => {
-  const isCurlRequest = req.headers['content-type'] === 'application/json';
-  if (isCurlRequest) {
-    const curlData = extractDataFromCurlCommand(req.body);
-    res.json(curlData);
+  const isJsonRequest = req.headers['content-type'] === 'application/json';
+  const isGetRequest = req.method === 'GET';
+
+  if (!isJsonRequest && !isGetRequest) {
+    res.status(400).json({ error: 'Bad Request' });
   } else {
-    // Handle GET request
-    res.render('api-resume-form', { templateOptions });
+    if(isJsonRequest)
+    {
+      res.send(req.body);
+    }
+    else 
+    {
+      res.render('api-resume-form', { templateOptions });
+    }
   }
 });
 
 router.post('/resume', async (req, res) => {
   try {
     // Initial setup, create credentials instance
-    const credentials = PDFServicesSdk.Credentials.servicePrincipalCredentialsBuilder()
-      .withClientId(process.env.PDF_SERVICES_CLIENT_ID)
-      .withClientSecret(process.env.PDF_SERVICES_CLIENT_SECRET)
-      .build();
-
+    
     // Extract the form data from the request body
     const {
       template_id,
@@ -100,7 +104,7 @@ router.post('/resume', async (req, res) => {
         break;
       default:
         // Handle the case when template_id is not found
-        res.status(400).json({ error: 'Invalid template_id' });
+        res.status(404).json({ error: 'Template not found' });
         return;
     }
 
@@ -124,6 +128,11 @@ router.post('/resume', async (req, res) => {
     }));
 
     // Create an ExecutionContext using credentials
+    try{
+    const credentials = PDFServicesSdk.Credentials.servicePrincipalCredentialsBuilder()
+      .withClientId(process.env.PDF_SERVICES_CLIENT_ID)
+      .withClientSecret(process.env.PDF_SERVICES_CLIENT_SECRET)
+      .build();
     const executionContext = PDFServicesSdk.ExecutionContext.create(credentials);
 
     // Create a new DocumentMerge options instance
@@ -157,12 +166,18 @@ router.post('/resume', async (req, res) => {
     const result = await documentMergeOperation.execute(executionContext);
     await result.saveAsFile(outputFilePath);
 
-    // Return the generated resume file path as the response
+    
     res.redirect('/success');
+  }catch(err)
+  {
+    res.status(401).json({error:'Unauthorised'});
+  }
   } catch (err) {
     console.log('Exception encountered while executing operation', err);
-    res.status(500).json({ error: 'An error occurred while generating the resume.' });
+    res.status(500).json({ error: 'Internal Server Error.' });
   }
 });
 
 module.exports = router;
+
+
