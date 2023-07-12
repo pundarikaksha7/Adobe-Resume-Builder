@@ -153,7 +153,7 @@ router.post('/resume', async (req, res) => {
     documentMergeOperation.setInput(input);
 
     // Generate a file name
-    const outputFilePath = "./resume.pdf";
+    const outputFilePath = "tmp/resume.pdf";
 
 
     // Execute the operation and save the result to the specified location
@@ -163,7 +163,7 @@ router.post('/resume', async (req, res) => {
 			res.setHeader("Content-Type", "application/pdf");
 
 		// reading and sending the generated file to the client
-			const file = fs.readFileSync(OUTPUT);
+			const file = fs.readFileSync(outputFilePath);
 			res.status(200).send(file);
    } catch (err) {
      console.log('Exception encountered while executing operation', err);
