@@ -153,7 +153,7 @@ router.post('/resume', async (req, res) => {
     documentMergeOperation.setInput(input);
 
     // Generate a file name
-    const outputFilePath = "tmp/resume.pdf";
+    const outputFilePath = "/tmp/resume.pdf";
 
 
     // Execute the operation and save the result to the specified location
