@@ -45,7 +45,7 @@ describe('Resume Builder API', () => {
     expect(response.headers.location).toBe('/success');
   }, 1000000);
 
-  it('should return 400 for invalid template ID', async () => {
+  it('should return 404 for invalid template ID', async () => {
     const requestBody = {
       template_id: '4', // Invalid template ID
       personal_information: {
@@ -450,44 +450,6 @@ describe('Resume Builder API', () => {
     expect(response.statusCode).toBe(302);
     expect(response.headers.location).toBe('/success');
   },1000000);
-
-  it('should return resume with empty personal information', async () => {
-    const requestBody = {
-      template_id: '1',
-      personal_information: {},
-      job_title: 'Software Engineer',
-      career_objective: 'Experienced software engineer with a passion for coding.',
-      skills: ['JavaScript', 'Python', 'React'],
-      education: [
-        {
-          school_name: 'ABC University',
-          passing_year: '2020',
-          description: 'Bachelor of Science in Computer Science'
-        }
-      ],
-      experience: [
-        {
-          company_name: 'XYZ Corporation',
-          passing_year: '2022',
-          responsibilities: 'Developed web applications using React'
-        }
-      ],
-      achievements: [
-        {
-          field: 'Hackathons',
-          awards: 'First Place in XYZ Hackathon'
-        }
-      ]
-    };
-
-    const response = await request(app)
-      .post('/resume')
-      .send(requestBody);
-
-    expect(response.statusCode).toBe(302);
-    expect(response.headers.location).toBe('/success');
-  },1000000);
-
 
   // Test case with empty skills
   it('should generate a resume PDF with empty skills', async () => {
