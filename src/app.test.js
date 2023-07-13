@@ -532,6 +532,19 @@ describe('Resume Builder API', () => {
     expect(response.headers.location).toBe('/success');
   },1000000);
 
+  it('should return internal server errors', async () => {
+    const requestBody = {
+      template_id:'1',
+    };
+
+    const response = await request(app)
+      .post('/resume')
+      .send(requestBody);
+
+    expect(response.statusCode).toBe(500);
+    expect(response.body.error).toBe("Internal Server Error");
+  }, 1000000);
+
 
   it('should return error for invalid client details', async () => {
     const requestBody = {
