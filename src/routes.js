@@ -65,13 +65,7 @@ router.post('/resume', async (req, res) => {
     // Extract the form data from the request body
     const {
       template_id,
-      personal_information = {
-        name: '',
-        last_name: '',
-        email_address: '',
-        phone_number: '',
-        linkedin_url: ''
-      },
+      personal_information,
       job_title,
       career_objective,
       skills,
@@ -80,6 +74,11 @@ router.post('/resume', async (req, res) => {
       achievements
     } = req.body;
 
+    if(personal_information==undefined) 
+    {
+      res.status(500).json({error:'Internal Server Error'});
+      return;
+    }
 
     // Access the data
     console.log('Template ID:', template_id);
