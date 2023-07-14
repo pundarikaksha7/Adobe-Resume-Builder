@@ -138,7 +138,7 @@ router.post('/resume', async (req, res) => {
   
 
     // Process Education
-    educationItems = education.map(item => {
+    const educationItems = education.map(item => {
       if (!item.school_name || !item.passing_year || !item.description) {
         res.status(400).json({ error: 'Bad Request' });
         return;
@@ -151,7 +151,7 @@ router.post('/resume', async (req, res) => {
       };
     });
     
-    experienceItems = experience.map(item => {
+    const experienceItems = experience.map(item => {
       if (!item.company_name || !item.passing_year || !item.responsibilities) {
         res.status(400).json({ error: 'Bad Request' });
         return;
@@ -164,7 +164,7 @@ router.post('/resume', async (req, res) => {
       };
     });
     
-    achievementItems = achievements.map(item => {
+    const achievementItems = achievements.map(item => {
       if (!item.field || !item.awards) {
         res.status(400).json({ error: 'Bad Request' });
         return;
