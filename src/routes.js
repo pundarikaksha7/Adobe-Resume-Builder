@@ -39,7 +39,6 @@ router.get('/success', (req, res) => {
   }
 });
 
-
 router.get('/resume', (req, res) => {
   const isJsonRequest = req.headers['content-type'] === 'application/json';
   const isGetRequest = req.method === 'GET';
@@ -58,6 +57,8 @@ router.get('/resume', (req, res) => {
   }
 });
 
+
+
 router.post('/resume', async (req, res) => {
   try {
     // Initial setup, create credentials instance
@@ -74,11 +75,7 @@ router.post('/resume', async (req, res) => {
       achievements
     } = req.body;
 
-    if(personal_information==undefined) 
-    {
-      res.status(500).json({error:'Internal Server Error'});
-      return;
-    }
+    
 
     // Access the data
     console.log('Template ID:', template_id);
@@ -107,27 +104,81 @@ router.post('/resume', async (req, res) => {
         return;
     }
 
-    const educationItems = (education || []).map(item => ({
-      SchoolName: item.school_name || '',
-      Year: item.passing_year || '',
-      Description: item.description || ''
-    }));
+    if(!personal_information ||!personal_information.name
+      ||!personal_information.last_name ||!personal_information.phone_number||
+      !personal_information.email_address ||!personal_information.linkedin_url)
+      {
+        res.status(400).json({ error: 'Bad Request' });
+        return;
+      }
 
-    // Process Experience
-    const experienceItems = (experience || []).map(item => ({
-      CompanyName: item.company_name || '',
-      Year: item.passing_year || '',
-      Description: item.responsibilities || ''
-    }));
 
-    // Process Achievements
-    const achievementItems = (achievements || []).map(item => ({
-      Type: item.field || '',
-      Description: item.awards || ''
-    }));
+    if (!skills || skills.length === 0) {
+      res.status(400).json({ error: 'Bad Request' });
+      return;
+    }
+  
+    // Check if education array is empty or absent
+    if (!education || education.length === 0) {
+      res.status(400).json({ error: 'Bad Request' });
+      return;
+    }
+  
+    // Check if experience array is empty or absent
+    if (!experience || experience.length === 0) {
+      res.status(400).json({ error: 'Bad Request' });
+      return;
+    }
+  
+    // Check if achievements array is empty or absent
+    if (!achievements || achievements.length === 0) {
+      res.status(400).json({ error: 'Bad Request' });
+      return;
+    }
+  
+
+    // Process Education
+    educationItems = education.map(item => {
+      if (!item.school_name || !item.passing_year || !item.description) {
+        res.status(400).json({ error: 'Bad Request' });
+        return;
+      }
+    
+      return {
+        SchoolName: item.school_name,
+        Year: item.passing_year,
+        Description: item.description
+      };
+    });
+    
+    experienceItems = experience.map(item => {
+      if (!item.company_name || !item.passing_year || !item.responsibilities) {
+        res.status(400).json({ error: 'Bad Request' });
+        return;
+      }
+    
+      return {
+        CompanyName: item.company_name,
+        Year: item.passing_year,
+        Description: item.responsibilities
+      };
+    });
+    
+    achievementItems = achievements.map(item => {
+      if (!item.field || !item.awards) {
+        res.status(400).json({ error: 'Bad Request' });
+        return;
+      }
+    
+      return {
+        Type: item.field,
+        Description: item.awards
+      };
+    });
+
 
     // Create an ExecutionContext using credentials
-    try{
+    
     const credentials = PDFServicesSdk.Credentials.servicePrincipalCredentialsBuilder()
       .withClientId(process.env.PDF_SERVICES_CLIENT_ID)
       .withClientSecret(process.env.PDF_SERVICES_CLIENT_SECRET)
@@ -162,15 +213,27 @@ router.post('/resume', async (req, res) => {
     const outputFilePath = resumeUtils.createOutputFilePath();
 
     // Execute the operation and save the result to the specified location
-    const result = await documentMergeOperation.execute(executionContext);
-    await result.saveAsFile(outputFilePath);
+
+    documentMergeOperation.execute(executionContext)
+        .then(result => {result.saveAsFile(outputFilePath);
+        res.redirect('/success');})
+        .catch(err => {
+            if(err instanceof PDFServicesSdk.Error.ServiceApiError
+                || err instanceof PDFServicesSdk.Error.ServiceUsageError) {
+                
+                res.status(401).json({error:"Unauthorised"});
+                return;
+            } else {
+                
+                res.status(500).json({error:'Internal Service Error'});
+                return;
+
+            }
+        });
 
     
-    res.redirect('/success');
-  }catch(err)
-  {
-    res.status(401).json({error:'Unauthorised'});
-  }
+   
+  
   } catch (err) {
     console.log('Exception encountered while executing operation', err);
     res.status(500).json({ error: 'Internal Server Error.' });

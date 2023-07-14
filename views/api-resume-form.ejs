@@ -65,20 +65,37 @@
 
     <div id="educationContainer" class="section">
       <h3>Education</h3>
-      <div id="educationItemsContainer"></div>
+      <div id="educationItemsContainer">
+        School/College Name:<br>
+  <input type="text" name="education[0][school_name]" required><br>
+  Graduating Year:<br>
+  <input type="text" name="education[0][passing_year]" required><br>
+  Education Description:<br>
+  <textarea name="education[0][description]" required></textarea>
+      </div>
 
       <button type="button" id="addEducationButton" onclick="addEducation()">Add Education</button>
     </div>
 
     <div id="experienceContainer" class="section">
       <h3>Experience</h3>
-      <div id="experienceItemsContainer"></div>
+      <div id="experienceItemsContainer"> Company Name:<br>
+        <input type="text" name="experience[0][company_name]" required><br>
+        Experience Years:<br>
+        <input type="text" name="experience[0][passing_year]" required><br>
+        Experience Description:<br>
+        <textarea name="experience[0][responsibilities]" required></textarea></div>
       <button type="button" id="addExperienceButton" onclick="addExperience()">Add Experience</button>
     </div>
 
     <div id="achievementsContainer" class="section">
       <h3>Achievements</h3>
-      <div id="achievementItemsContainer"></div>
+      <div id="achievementItemsContainer">
+        Achievement Field:<br>
+  <input type="text" name="achievements[0][field]" required><br>
+  Achievement Awards:<br>
+  <input type="text" name="achievements[0][awards]" required>
+      </div>
       <button type="button" id="addAchievementButton" onclick="addAchievement()">Add Achievement</button>
     </div>
 
