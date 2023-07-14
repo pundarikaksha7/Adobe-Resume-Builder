@@ -418,9 +418,30 @@ describe('Resume Builder API', () => {
         job_title: 'Software Engineer',
         career_objective: 'To contribute to innovative projects',
         skills: [], // Empty skills array
-        education: [],
-        experience: [],
-        achievements: []
+        education: [
+          {
+            school_name: 'ABC University',
+            passing_year: '2020',
+            description: 'Bachelor of Science in Computer Science'
+          }
+        ],
+        experience: [
+          {
+            company_name: 'XYZ Corporation',
+            passing_year: '2022',
+            responsibilities: 'Developed web applications using React'
+          }
+        ],
+        achievements: [
+          {
+            field: 'Hackathons',
+            awards: 'First Place in XYZ Hackathon'
+          },
+          {
+            field: 'Programming Contests',
+            awards: 'Top Coder in Code Challenge 2021'
+          }
+        ]
       });
 
       expect(response.statusCode).toBe(400);
@@ -437,8 +458,23 @@ describe('Resume Builder API', () => {
         career_objective: 'To contribute to innovative projects',
         skills: ['JavaScript', 'Node.js'],
         // Missing education array
-        experience: [],
-        achievements: []
+        experience: [
+          {
+            company_name: 'XYZ Corporation',
+            passing_year: '2022',
+            responsibilities: 'Developed web applications using React'
+          }
+        ],
+        achievements: [
+          {
+            field: 'Hackathons',
+            awards: 'First Place in XYZ Hackathon'
+          },
+          {
+            field: 'Programming Contests',
+            awards: 'Top Coder in Code Challenge 2021'
+          }
+        ]
       });
 
       expect(response.statusCode).toBe(400);
@@ -466,8 +502,23 @@ describe('Resume Builder API', () => {
             description: '' // Empty description
           }
         ],
-        experience: [],
-        achievements: []
+        experience: [
+          {
+            company_name: 'XYZ Corporation',
+            passing_year: '2022',
+            responsibilities: 'Developed web applications using React'
+          }
+        ],
+        achievements: [
+          {
+            field: 'Hackathons',
+            awards: 'First Place in XYZ Hackathon'
+          },
+          {
+            field: 'Programming Contests',
+            awards: 'Top Coder in Code Challenge 2021'
+          }
+        ]
       });
 
       expect(response.statusCode).toBe(400);
@@ -483,9 +534,24 @@ describe('Resume Builder API', () => {
         job_title: 'Software Engineer',
         career_objective: 'To contribute to innovative projects',
         skills: ['JavaScript', 'Node.js'],
-        education: [],
+        education: [
+          {
+            school_name: 'ABC University',
+            passing_year: '2020',
+            description: 'Bachelor of Science in Computer Science'
+          }
+        ],
         // Missing experience array
-        achievements: []
+        achievements: [
+          {
+            field: 'Hackathons',
+            awards: 'First Place in XYZ Hackathon'
+          },
+          {
+            field: 'Programming Contests',
+            awards: 'Top Coder in Code Challenge 2021'
+          }
+        ]
       });
 
       expect(response.statusCode).toBe(400);
@@ -501,7 +567,13 @@ describe('Resume Builder API', () => {
         job_title: 'Software Engineer',
         career_objective: 'To contribute to innovative projects',
         skills: ['JavaScript', 'Node.js'],
-        education: [],
+        education: [
+          {
+            school_name: 'ABC University',
+            passing_year: '2020',
+            description: 'Bachelor of Science in Computer Science'
+          }
+        ],
         experience: [
           {
             // Missing company_name
@@ -514,7 +586,16 @@ describe('Resume Builder API', () => {
             responsibilities: [] // Empty responsibilities array
           }
         ],
-        achievements: []
+        achievements: [
+          {
+            field: 'Hackathons',
+            awards: 'First Place in XYZ Hackathon'
+          },
+          {
+            field: 'Programming Contests',
+            awards: 'Top Coder in Code Challenge 2021'
+          }
+        ]
       });
 
       expect(response.statusCode).toBe(400);
@@ -530,8 +611,20 @@ describe('Resume Builder API', () => {
         job_title: 'Software Engineer',
         career_objective: 'To contribute to innovative projects',
         skills: ['JavaScript', 'Node.js'],
-        education: [],
-        experience: [],
+        education: [
+          {
+            school_name: 'ABC University',
+            passing_year: '2020',
+            description: 'Bachelor of Science in Computer Science'
+          }
+        ],
+        experience: [
+          {
+            company_name: 'XYZ Corporation',
+            passing_year: '2022',
+            responsibilities: 'Developed web applications using React'
+          }
+        ],
         // Missing achievements array
       });
 
@@ -548,8 +641,20 @@ describe('Resume Builder API', () => {
         job_title: 'Software Engineer',
         career_objective: 'To contribute to innovative projects',
         skills: ['JavaScript', 'Node.js'],
-        education: [],
-        experience: [],
+        education: [
+          {
+            school_name: 'ABC University',
+            passing_year: '2020',
+            description: 'Bachelor of Science in Computer Science'
+          }
+        ],
+        experience: [
+          {
+            company_name: 'XYZ Corporation',
+            passing_year: '2022',
+            responsibilities: 'Developed web applications using React'
+          }
+        ],
         achievements: [
           {
             // Missing field
@@ -733,3 +838,4 @@ describe('Resume Builder API', () => {
 
 
 });
+
