@@ -113,13 +113,15 @@ Both methods would create the pdf inside `output` folder.
 
 ## Testing
 
-The API testing is performed using the app.test.js file located in the src directory. The testing framework employed is Jest. This test file encompasses a comprehensive suite of tests that evaluate the API's functionality against all three templates. It verifies the behavior of the API with various datasets, including edge cases such as invalid template IDs,internal server errors and incorrect client credentials. Through this testing process, the API's robustness and reliability are thoroughly assessed to ensure accurate and secure resume generation.
+The API testing is performed using the app.test.js file located in the src directory. The testing framework employed is Jest. This test file encompasses a comprehensive suite of tests that evaluate the API's functionality against all three templates. It verifies the behavior of the API with various datasets, including edge cases such as invalid template IDs,internal server errors, bad requests and incorrect client credentials. Through this testing process, the API's robustness and reliability are thoroughly assessed to ensure accurate and secure resume generation.
 
 To run tests on the algorithm, run the following command.
 
 ```shell
 npm test
 ```
+
+
 
 Important: Make sure that your client id and secret keys have been set in the local or global environments before running the tests.
 
