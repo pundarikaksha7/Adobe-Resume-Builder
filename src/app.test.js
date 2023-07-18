@@ -408,6 +408,85 @@ describe('Resume Builder API', () => {
     expect(response.headers.location).toBe('/success');
   },1000000);
 
+  //Test with empty career objective
+  it('should respond with 400 if career obj is empty', async () => {
+    const response = await request(app)
+      .post('/resume')
+      .send({
+        template_id: '1',
+        personal_information: { name: 'John', last_name: 'Doe' },
+        job_title: 'Software Engineer',
+        skills: ["C++"],
+        education: [
+          {
+            school_name: 'ABC University',
+            passing_year: '2020',
+            description: 'Bachelor of Science in Computer Science'
+          }
+        ],
+        experience: [
+          {
+            company_name: 'XYZ Corporation',
+            passing_year: '2022',
+            responsibilities: 'Developed web applications using React'
+          }
+        ],
+        achievements: [
+          {
+            field: 'Hackathons',
+            awards: 'First Place in XYZ Hackathon'
+          },
+          {
+            field: 'Programming Contests',
+            awards: 'Top Coder in Code Challenge 2021'
+          }
+        ]
+      });
+
+      expect(response.statusCode).toBe(400);
+      expect(response.body.error).toBe("Bad Request");
+  },100000);
+
+  //Test case with empty job title
+  it('should respond with 400 if skills array is empty', async () => {
+    const response = await request(app)
+      .post('/resume')
+      .send({
+        template_id: '1',
+        personal_information: { name: 'John', last_name: 'Doe' },
+        career_objective: 'To contribute to innovative projects',
+        skills: ["Hello"], // Empty skills array
+        education: [
+          {
+            school_name: 'ABC University',
+            passing_year: '2020',
+            description: 'Bachelor of Science in Computer Science'
+          }
+        ],
+        experience: [
+          {
+            company_name: 'XYZ Corporation',
+            passing_year: '2022',
+            responsibilities: 'Developed web applications using React'
+          }
+        ],
+        achievements: [
+          {
+            field: 'Hackathons',
+            awards: 'First Place in XYZ Hackathon'
+          },
+          {
+            field: 'Programming Contests',
+            awards: 'Top Coder in Code Challenge 2021'
+          }
+        ]
+      });
+
+      expect(response.statusCode).toBe(400);
+      expect(response.body.error).toBe("Bad Request");
+  },100000);
+
+
   // Test case with empty skills
   it('should respond with 400 if skills array is empty', async () => {
     const response = await request(app)
@@ -838,4 +917,6 @@ describe('Resume Builder API', () => {
 
 
 });
+
+
 
